@@ -2,10 +2,10 @@ namespace SpriteKind {
     export const Friend = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Friend, function (sprite, otherSprite) {
-    game.gameOver(true)
+    sprites.destroy(Delta, effects.fire, 100)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    projectile.setPosition(0, 0)
+    sprites.destroy(projectile)
     info.changeLifeBy(-1)
     pause(900)
 })
@@ -19,7 +19,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     music.play(music.createSong(assets.song`gnam`), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    game.gameOver(true)
+    sprites.destroy(Charli, effects.fire, 100)
 })
 let projectile: Sprite = null
 let cibo: Sprite = null
